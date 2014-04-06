@@ -1,20 +1,29 @@
 function TodoCtrl($scope, $http) {
-	$scope.title = "Todo";
-	$scope.cityList = [{
+	$scope.localStorageSupport = false;
+	if(typeof(Storage)!=="undefined"){
+		$scope.localStorageSupport = true;
+		
+	}
+	$scope.title = "Ontario Weather";
+	$scope.cityList = [
+		{
 			name : 'Barrie',
 			country : 'ca'
-		}, {
+		}, 
+		{
 			name : 'Toronto',
 			country : 'ca'
-		}, {
+		}, 
+		{
 			name : 'London',
 			country : 'ca'
 		}
 
 	]
+	
 	$scope.check_city = '';
 	$scope.city_weather = function () {
-		console.log(this);
+		
 		$scope.check_city = this.check_city;
 		
 		$http.get('http://api.openweathermap.org/data/2.5/weather?q=' + $scope.check_city+"&units=metric").success(function (data) {
@@ -22,5 +31,14 @@ function TodoCtrl($scope, $http) {
 			$scope.wind = data.wind;
 		});
 	}
-
+	$scope.add_city_to_list = function(){
+		if($scope.add_city.length>0){
+			$scope.cityList.push({name:$scope.add_city,country:'ca'});
+		$scope.add_city = '';
+		
+		
+		
+		}
+		
+	}
 }
