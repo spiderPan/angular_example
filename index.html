@@ -22,11 +22,21 @@
 		<h2>{{title}}</h2>
 		<form role="form">
 			<div class="form-group">
-				<label for="item-select">Type</label>
+				<label for="item-select">City</label>
 				<select id="item-select" class="form-control" name="city" ng-change="city_weather()" ng-model="check_city">
-					<option>Select One</option>
-					<option ng-repeat="city in cityList" value="{{city.name}},{{city.country}}">{{city.name}}</option>
+					<option ng-repeat="city in cityList | filter:city.name" value="{{city.name}},{{city.country}}">{{city.name}}</option>
 				</select>
+			</div>
+			
+			<div class="form-group">
+				
+				<label for="add-city">Add New City</label>
+				<input id="add-city" type="text" class="form-control" name="add_city" ng-model="add_city">
+				
+				
+			</div>
+			<div class="form-group">
+				<button class="btn btn-block btn-primary" ng-click="add_city_to_list()">Submit</button>
 			</div>
 			
 			
