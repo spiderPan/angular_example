@@ -7,8 +7,8 @@ function TodoCtrl($scope, $http) {
 	$scope.title = "Ontario Weather";
 	$scope.cityList = [
 		{
-			name : 'Barrie',
-			country : 'ca'
+			name : 'Shanghai',
+			country : 'cn'
 		}, 
 		{
 			name : 'Toronto',
