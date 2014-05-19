@@ -7,8 +7,8 @@ function TodoCtrl($scope, $http) {
 	$scope.title = "Ontario Weather";
 	$scope.cityList = [
 		{
-			name : 'Barrie',
-			country : 'ca'
+			name : 'Shanghai',
+			country : 'cn'
 		}, 
 		{
 			name : 'Toronto',
@@ -32,8 +32,17 @@ function TodoCtrl($scope, $http) {
 		});
 	}
 	$scope.add_city_to_list = function(){
-		if($scope.add_city.length>0){
-			$scope.cityList.push({name:$scope.add_city,country:'ca'});
+		var _city = $scope.add_city.trim();
+		if(_city.length>0){
+			if(lastIndexOf(_city)>-1){
+				var _cityInfo = $scope.add_city.split(',');
+				for(var i in _cityInfo){
+					
+				}
+				$scope.cityList.push({name:$scope.add_city,country:'ca'});
+			}else{
+				$scope.cityList.push({name:_city,country:'ca'});
+			}
 		$scope.add_city = '';
 		
 		
