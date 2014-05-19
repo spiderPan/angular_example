@@ -32,8 +32,17 @@ function TodoCtrl($scope, $http) {
 		});
 	}
 	$scope.add_city_to_list = function(){
-		if($scope.add_city.length>0){
-			$scope.cityList.push({name:$scope.add_city,country:'ca'});
+		var _city = $scope.add_city.trim();
+		if(_city.length>0){
+			if(_city.lastIndexOf(',')>-1){
+				var _position = _city.lastIndexOf(',');
+				var _cityName = _city.substring(0, _position).trim(); 
+				var _country = _city.substr(_position+1).trim(); 
+				
+				$scope.cityList.push({name:_cityName, country:_country});
+			}else{
+				$scope.cityList.push({name:_city,country:'ca'});
+			}
 		$scope.add_city = '';
 		
 		
